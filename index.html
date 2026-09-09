@@ -1,0 +1,860 @@
+Below is a complete, responsive portfolio website for **Budharaju Sathyasai Ramana Raju**. Save it as `index.html` and open it in a browser.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ramana Raju | Python Engineer</title>
+  <meta
+    name="description"
+    content="Portfolio of Ramana Raju, a Python Engineer specializing in AI, machine learning, test automation, and data science."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --surface: #12151c;
+      --surface-light: #1a1f29;
+      --text: #f4f7fb;
+      --muted: #a2acba;
+      --line: rgba(255, 255, 255, 0.1);
+      --accent: #a7f36b;
+      --accent-dark: #7fc64c;
+      --blue: #7dd3fc;
+      --max-width: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 80% 10%, rgba(167, 243, 107, 0.08), transparent 30rem),
+        radial-gradient(circle at 10% 30%, rgba(125, 211, 252, 0.06), transparent 25rem),
+        var(--bg);
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 40px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .mono {
+      color: var(--accent);
+      font-family: "DM Mono", monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    header {
+      position: fixed;
+      z-index: 20;
+      top: 0;
+      width: 100%;
+      background: rgba(11, 13, 18, 0.78);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 74px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .logo-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--accent);
+      color: var(--bg);
+      font-family: "DM Mono", monospace;
+      font-size: 0.9rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      display: grid;
+      min-height: 100vh;
+      align-items: center;
+      padding: 150px 0 90px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 25px;
+      border: 1px solid rgba(167, 243, 107, 0.28);
+      border-radius: 999px;
+      padding: 8px 13px;
+      background: rgba(167, 243, 107, 0.06);
+      color: var(--accent);
+      font-family: "DM Mono", monospace;
+      font-size: 0.72rem;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 14px var(--accent);
+    }
+
+    h1 {
+      max-width: 900px;
+      font-size: clamp(3rem, 8vw, 7.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.08em;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .hero-description {
+      max-width: 650px;
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 12px 18px;
+      background: var(--accent);
+      color: #11150e;
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: #c0ff91;
+    }
+
+    .button.secondary {
+      border-color: var(--line);
+      background: transparent;
+      color: var(--text);
+    }
+
+    .button.secondary:hover {
+      border-color: var(--accent);
+      background: rgba(167, 243, 107, 0.07);
+    }
+
+    section {
+      padding: 105px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 42px;
+    }
+
+    .section-heading h2 {
+      margin-top: 8px;
+      font-size: clamp(2rem, 5vw, 3.7rem);
+      letter-spacing: -0.07em;
+      line-height: 1;
+    }
+
+    .section-heading p {
+      max-width: 360px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+    }
+
+    .about-copy {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .about-copy p + p {
+      margin-top: 20px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 22px;
+      background: var(--surface);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--accent);
+      font-size: 2rem;
+      letter-spacing: -0.06em;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.83rem;
+    }
+
+    .experience {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 36px;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .experience:first-of-type {
+      border-top: 1px solid var(--line);
+    }
+
+    .date {
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 0.78rem;
+    }
+
+    .experience h3 {
+      font-size: 1.35rem;
+    }
+
+    .company {
+      margin-top: 3px;
+      color: var(--accent);
+    }
+
+    .experience ul {
+      margin-top: 18px;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .experience li + li {
+      margin-top: 8px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 10px;
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 0.69rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .project-card {
+      display: flex;
+      min-height: 330px;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.04), transparent),
+        var(--surface);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .project-card:hover {
+      border-color: rgba(167, 243, 107, 0.5);
+      transform: translateY(-4px);
+    }
+
+    .project-number {
+      color: var(--accent);
+      font-family: "DM Mono", monospace;
+      font-size: 0.8rem;
+    }
+
+    .project-card h3 {
+      margin-top: 35px;
+      font-size: 1.45rem;
+      letter-spacing: -0.04em;
+    }
+
+    .project-card p {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.91rem;
+    }
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 50px;
+    }
+
+    .skills-intro {
+      color: var(--muted);
+    }
+
+    .skills-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .skill-group {
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 20px;
+      background: var(--surface);
+    }
+
+    .skill-group h3 {
+      margin-bottom: 12px;
+      color: var(--blue);
+      font-size: 0.85rem;
+    }
+
+    .skill-group p {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact h2 {
+      max-width: 700px;
+      margin: 10px auto 20px;
+      font-size: clamp(2.5rem, 7vw, 5.7rem);
+      line-height: 0.98;
+      letter-spacing: -0.08em;
+    }
+
+    .contact p {
+      max-width: 520px;
+      margin: 0 auto;
+      color: var(--muted);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0;
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 0.72rem;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .about-grid,
+      .skills-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experience {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .section-heading p {
+        margin-top: 17px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(100% - 28px, var(--max-width));
+      }
+
+      .hero {
+        padding-top: 125px;
+      }
+
+      .stats,
+      .skills-list {
+        grid-template-columns: 1fr;
+      }
+
+      footer .container {
+        display: block;
+      }
+
+      footer span {
+        display: block;
+        margin-top: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#top" class="logo">
+          <span class="logo-mark">BR</span>
+          <span>Ramana Raju</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="availability">
+            <span class="status-dot"></span>
+            Available for opportunities
+          </div>
+
+          <p class="mono">Python Engineer · AI</p>
+
+          <h1>
+            I build reliable systems with
+            <span>intelligence.</span>
+          </h1>
+
+          <p class="hero-description">
+            Python engineer focused on machine learning, NLP, test automation,
+            data analysis, and clean software that performs under scrutiny.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button" href="#projects">View my work</a>
+            <a class="button secondary" href="mailto:ramanaraju15@gmail.com">
+              Get in touch
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="mono">01 / About</p>
+            <h2>Engineering with curiosity and precision.</h2>
+          </div>
+
+          <p>
+            I enjoy taking complex problems apart, validating every layer, and
+            turning ideas into working products.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>
+              I am a Python engineer with hands-on experience building and
+              integrating AI systems. During my internship at Gerbera
+              Technologies, I engineered and deployed an NLP chatbot using
+              TensorFlow, Flask, NLTK, and the OpenAI API.
+            </p>
+
+            <p>
+              My work combines software development with analytical thinking:
+              preprocessing data, evaluating models, debugging pipelines,
+              testing APIs, and verifying outputs against expected behavior.
+            </p>
+
+            <p>
+              I am currently looking to contribute to teams working on
+              intelligent systems, test engineering, automation, and
+              data-driven products.
+            </p>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>4+</strong>
+              <span>Machine learning projects</span>
+            </div>
+
+            <div class="stat">
+              <strong>8.22</strong>
+              <span>B.Tech CGPA / 10</span>
+            </div>
+
+            <div class="stat">
+              <strong>1</strong>
+              <span>Production AI chatbot shipped</span>
+            </div>
+
+            <div class="stat">
+              <strong>2025</strong>
+              <span>Computer Science graduate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="mono">02 / Experience</p>
+            <h2>Building, testing, improving.</h2>
+          </div>
+        </div>
+
+        <article class="experience">
+          <div class="date">AUG 2024 — NOV 2024</div>
+
+          <div>
+            <h3>Software Engineer Intern</h3>
+            <p class="company">Gerbera Technologies Pvt. Ltd. · Hyderabad</p>
+
+            <ul>
+              <li>
+                Engineered and shipped a production AI chatbot in Python using
+                TensorFlow and Flask.
+              </li>
+              <li>
+                Applied NER with NLTK to extract names, locations, and product
+                entities from user queries.
+              </li>
+              <li>
+                Diagnosed a tokenization and preprocessing bottleneck that
+                improved chatbot intent recognition accuracy.
+              </li>
+              <li>
+                Integrated and tested OpenAI API endpoints, including response
+                parsing, error handling, and edge-case debugging.
+              </li>
+              <li>
+                Created modular scripts for data preprocessing, model
+                inference, and API communication.
+              </li>
+            </ul>
+
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">TensorFlow</span>
+              <span class="tag">NLTK</span>
+              <span class="tag">Flask</span>
+              <span class="tag">OpenAI API</span>
+              <span class="tag">REST APIs</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="mono">03 / Selected work</p>
+            <h2>Projects that turn data into decisions.</h2>
+          </div>
+
+          <p>
+            A selection of machine learning, computer vision, NLP, and
+            full-stack projects.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div>
+              <span class="project-number">01 — COMPUTER VISION</span>
+              <h3>Blood Group Detection from Fingerprint Images</h3>
+              <p>
+                Designed a hybrid CNN–LSTM model for blood group classification,
+                supported by an OpenCV preprocessing pipeline and a Flask
+                prediction application.
+              </p>
+            </div>
+
+            <div class="tags">
+              <span class="tag">CNN</span>
+              <span class="tag">LSTM</span>
+              <span class="tag">OpenCV</span>
+              <span class="tag">Flask</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div>
+              <span class="project-number">02 — PREDICTIVE ANALYTICS</span>
+              <h3>SpaceX Falcon 9 Landing Predictor</h3>
+              <p>
+                Compared four classification algorithms using cross-validation,
+                confusion matrices, feature engineering, and systematic model
+                evaluation.
+              </p>
+            </div>
+
+            <div class="tags">
+              <span class="tag">scikit-learn</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">NumPy</span>
+              <span class="tag">ML Pipeline</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div>
+              <span class="project-number">03 — DEEP LEARNING</span>
+              <h3>Plant Disease Detection Using YOLO</h3>
+              <p>
+                Trained and evaluated an object detection model using image
+                augmentation, confidence threshold tuning, and false-positive
+                analysis.
+              </p>
+            </div>
+
+            <div class="tags">
+              <span class="tag">YOLO</span>
+              <span class="tag">OpenCV</span>
+              <span class="tag">Object Detection</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div>
+              <span class="project-number">04 — FULL STACK</span>
+              <h3>Restaurant Reservation System</h3>
+              <p>
+                Built a MERN application with table booking, customer
+                management, an admin dashboard, REST APIs, and manual
+                end-to-end testing.
+              </p>
+            </div>
+
+            <div class="tags">
+              <span class="tag">MongoDB</span>
+              <span class="tag">Express.js</span>
+              <span class="tag">React.js</span>
+              <span class="tag">Node.js</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="mono">04 / Technical skills</p>
+            <h2>Tools for the full development loop.</h2>
+          </div>
+        </div>
+
+        <div class="skills-layout">
+          <p class="skills-intro">
+            From data preparation and model evaluation to API integration and
+            test automation, I work across the layers needed to make systems
+            dependable.
+          </p>
+
+          <div class="skills-list">
+            <div class="skill-group">
+              <h3>LANGUAGES</h3>
+              <p>Python, SQL, JavaScript</p>
+            </div>
+
+            <div class="skill-group">
+              <h3>TESTING & DEBUGGING</h3>
+              <p>Pytest, unit testing, API testing, data validation, output verification</p>
+            </div>
+
+            <div class="skill-group">
+              <h3>ML & AI</h3>
+              <p>Classification, regression, CNN, LSTM, NLP, feature engineering</p>
+            </div>
+
+            <div class="skill-group">
+              <h3>LIBRARIES</h3>
+              <p>Pandas, NumPy, Matplotlib, scikit-learn, TensorFlow, OpenCV, NLTK</p>
+            </div>
+
+            <div class="skill-group">
+              <h3>APIs & INTEGRATION</h3>
+              <p>OpenAI API, REST API development, JSON parsing, error handling</p>
+            </div>
+
+            <div class="skill-group">
+              <h3>TOOLS & DATABASES</h3>
+              <p>Git, GitHub, Jupyter, Colab, Linux, MySQL, MongoDB</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <p class="mono">05 / Contact</p>
+
+        <h2>Let’s build something useful.</h2>
+
+        <p>
+          I am open to opportunities in Python engineering, machine learning,
+          test automation, and data-driven product development.
+        </p>
+
+        <div class="contact-links">
+          <a class="button" href="mailto:ramanaraju15@gmail.com">
+            Email me
+          </a>
+
+          <a
+            class="button secondary"
+            href="https://www.linkedin.com/in/b-ramana-raju"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+
+          <a
+            class="button secondary"
+            href="https://github.com/rajubssr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© 2026 Ramana Raju</span>
+      <span>Python · AI · Test Automation</span>
+    </div>
+  </footer>
+</body>
+</html>
+```
+
+The design uses a dark technical aesthetic with lime accents, responsive layouts, project cards, experience details, skills, and direct links to email, LinkedIn, and GitHub.
